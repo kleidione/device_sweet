@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.arrow.cutoutringservice.sweet;
+package com.aosp.cutoutringservice.sweet;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -36,7 +36,7 @@ import android.view.WindowManagerGlobal;
 import android.view.IWindowManager;
 import android.widget.ImageView;
 
-import com.arrow.cutoutringservice.sweet.R;
+import com.aosp.cutoutringservice.sweet.R;
 
 import static android.view.Surface.ROTATION_0;
 import static android.view.Surface.ROTATION_90;
