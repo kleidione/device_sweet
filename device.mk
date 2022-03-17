@@ -209,6 +209,9 @@ PRODUCT_PACKAGES += \
     libshim_megvii
 
 PRODUCT_PACKAGES += \
+    GoogleCameraGo    
+
+PRODUCT_PACKAGES += \
     CutoutRingServiceSweet
 
 # Display
