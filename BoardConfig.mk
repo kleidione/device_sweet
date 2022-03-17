@@ -26,28 +26,22 @@ TARGET_BOOTLOADER_BOARD_NAME := sm6150
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
-                        androidboot.memcg=1 \
-                        lpm_levels.sleep_disabled=1 \
-                        video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 \
-                        service_locator.enable=1 \
-                        swiotlb=1 \
-                        androidboot.usbcontroller=a600000.dwc3
-
-BOARD_KERNEL_BASE        := 0x00000000
-BOARD_KERNEL_PAGESIZE    := 4096
+BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3
+BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CONFIG := sweet_user_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sweet
+BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := proton
+TARGET_KERNEL_CONFIG := sweet_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/sweet
+TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 9126805504
