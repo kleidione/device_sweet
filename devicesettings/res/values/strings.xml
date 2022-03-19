@@ -12,23 +12,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="device_settings_title">Device specific settings</string>
+    <string name="device_settings_title">Device extras</string>
     <string name="device_settings_summary">Customise the device specific aspects</string>
 
     <string name="refresh_rate_title">Refresh rate</string>
-    <string name="refresh_rate_summary">Change your device\'s display refresh rate for a better experience</string>
+
     <string name="enable_high_refresh_rate_title">High refresh rate</string>
     <string name="enable_high_refresh_rate_summary">Enable high refresh rate for a smoother experience</string>
-    <string name="current_refresh_rate_info">The display is currently running at <xliff:g id="version">%1$s</xliff:g>Hz</string>
+    <string name="current_refresh_rate_info">Current refresh rate: <xliff:g id="version">%1$s</xliff:g> Hz</string>
 
     <string name="display_title">Display</string>
+    
     <string name="dc_dimming_title">DC Dimming</string>
     <string name="dc_dimming_summary">Enable DC Dimming to avoid screen flickering on low brightness levels</string>
 
     <string name="sound_title">Sound</string>
 
-    <string name="dirac_enable">Enable sound enhancement</string>
-    <string name="dirac_title">Dirac sound enhancer</string>
+    <string name="dirac_enable">Use Mi Sound Enhancer</string>
+    <string name="dirac_title">Mi Sound Enhancer</string>
     <string name="dirac_summary">Configure sound presets, headset types and more</string>
     <string name="dirac_headset_title">Headset type</string>
     <string name="dirac_preset_title">Sound preset</string>
@@ -68,7 +69,7 @@
     <string name="dirac_preset_dance">Dance</string>
     <string name="dirac_preset_metal">Metal</string>
 
-    <string name="dirac_hifi_enable_title"> Enable Hi-fi</string>
+    <string name="dirac_hifi_enable_title">Enable Hi-Fi</string>
     <string name="dirac_hifi_title">Hi-Fi</string>
     <string name="dirac_hifi_summary">Decrease noise and Distortion and increase audio quality</string>
 </resources>
