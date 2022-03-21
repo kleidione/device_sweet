@@ -205,7 +205,8 @@ PRODUCT_PACKAGES += \
     libshim_megvii
 
 PRODUCT_PACKAGES += \
-    GoogleCameraGo    
+    CameraGo \
+    privapp-permissions-camera-go.xml   
 
 PRODUCT_PACKAGES += \
     CutoutRingServiceSweet
