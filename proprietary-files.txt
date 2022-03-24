@@ -1916,9 +1916,9 @@ vendor/etc/acdbdata/Forte/Forte_Headset_cal.acdb|c2363b9ef202e6aa4da640af2d9e8f2
 vendor/etc/acdbdata/Forte/Forte_Speaker_cal.acdb|32bc396ee4f72c3c65f026860ec9bbb5
 vendor/etc/acdbdata/Forte/Forte_workspaceFile.qwsp|82270eb454fdd02a89062934893f67f4
 
-# From sweet-user 11 RKQ1.200826.002 V12.5.8.0.RKFMIXM release-keys
+# From sweetin-user 12 RKQ1.210614.002 V13.0.3.0.SKFINXM release-keys
 vendor/lib64/camera/com.qti.tuned.sweet_ofilm_s5kgw3_wide.bin|7b128c61f1188a2d8f8176d316712522
 vendor/lib64/camera/com.qti.tuned.sweet_sunny_s5kgw3_wide.bin|f90a48beb4a5e7930e12e63b91698071
 
-# From nx627-user 11 RKQ1.200826.002 nubia.20210824.181213 release-keys
+# From sunfish-user 12 SP2A.220305.012 8177914 release-keys
 vendor/lib64/libsdedrm.so|42e2f2637dde9238ded91b08bf0bd53a
