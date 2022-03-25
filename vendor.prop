@@ -131,6 +131,11 @@ media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 qcom.hw.aac.encoder=true
 vendor.mm.enable.qcom_parser=67108863
 persist.mm.enable.prefetch=true
+ro.surface_flinger.use_color_management=true
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.protected_contents=true
+ro.surface_flinger.wcg_composition_dataspace=143261696
 
 #Netflix custom property
 ro.netflix.bsp_rev=Q6150-17263-1
