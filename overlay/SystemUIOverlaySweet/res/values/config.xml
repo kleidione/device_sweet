@@ -49,4 +49,7 @@
 
     <!--  Flag to turn on the rendering of the above path or not  -->
     <bool name="config_enableDisplayCutoutProtection">true</bool>
+    
+    <!-- Config rounded corner multiple radius -->
+    <bool name="config_roundedCornerMultipleRadius">true</bool>
 </resources>
