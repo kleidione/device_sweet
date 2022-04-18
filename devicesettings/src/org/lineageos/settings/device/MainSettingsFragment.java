@@ -17,12 +17,10 @@
 package org.lineageos.settings.device;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.widget.TextView;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
-import androidx.preference.ListPreference;
 import androidx.preference.SwitchPreference;
 
 import org.lineageos.settings.device.Constants;
@@ -32,7 +30,7 @@ import org.lineageos.settings.device.utils.DisplayUtils;
 public class MainSettingsFragment extends PreferenceFragment {
 
     private Preference mPrefRefreshRateInfo;
-    private ListPreference mPrefRefreshRateConfig;
+    private SwitchPreference mPrefMinRefreshRate;
     private SwitchPreference mPrefDcDimming;
 
     @Override
@@ -44,11 +42,12 @@ public class MainSettingsFragment extends PreferenceFragment {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.main_settings);
-        mPrefRefreshRateConfig = (ListPreference) findPreference(Constants.KEY_REFRESH_RATE_CONFIG);
-        mPrefRefreshRateConfig.setOnPreferenceChangeListener(PrefListener);
+        mPrefMinRefreshRate = (SwitchPreference) findPreference(Constants.KEY_MIN_REFRESH_RATE);
+        mPrefMinRefreshRate.setOnPreferenceChangeListener(PrefListener);
         mPrefRefreshRateInfo = (Preference) findPreference(Constants.KEY_REFRESH_RATE_INFO);
         mPrefDcDimming = (SwitchPreference) findPreference(Constants.KEY_DC_DIMMING);
         mPrefDcDimming.setOnPreferenceChangeListener(PrefListener);
+        setupPreferences();
         updateSummary();
     }
 
@@ -58,8 +57,8 @@ public class MainSettingsFragment extends PreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object value) {
                 final String key = preference.getKey();
 
-                if (Constants.KEY_REFRESH_RATE_CONFIG.equals(key)) {
-                    setHzConfig();
+                if (Constants.KEY_MIN_REFRESH_RATE.equals(key)) {
+                    setHz(Constants.REFRESH_RATES[(boolean) value ? 1 : 0]);
                 } else if (Constants.KEY_DC_DIMMING.equals(key)) {
                     DisplayUtils.setDcDimmingStatus((boolean) value);
                 }
@@ -68,29 +67,30 @@ public class MainSettingsFragment extends PreferenceFragment {
             }
         };
 
-    private float getCurrentMinHz() {
+    private void setupPreferences() {
+        float hz = getCurrentHz();
+
+        if (hz == Constants.REFRESH_RATES[0]) {
+            mPrefMinRefreshRate.setChecked(false);
+        } else if (hz == Constants.REFRESH_RATES[1]) {
+            mPrefMinRefreshRate.setChecked(true);
+        }
+    }
+
+    private float getCurrentHz() {
         return Settings.System.getFloat(getContext().getContentResolver(),
             Settings.System.MIN_REFRESH_RATE, Constants.DEFAULT_REFRESH_RATE);
     }
 
-    private float getCurrentMaxHz() {
-        return Settings.System.getFloat(getContext().getContentResolver(),
-            Settings.System.PEAK_REFRESH_RATE, Constants.DEFAULT_REFRESH_RATE);
-    }
-
-    private void setHzConfig() {
-        DisplayUtils.updateRefreshRateSettings(getContext());
+    private void setHz(float hz) {
+        Settings.System.putFloat(getContext().getContentResolver(),
+            Settings.System.MIN_REFRESH_RATE, hz);
         updateSummary();
     }
 
     private void updateSummary() {
-        if (mPrefRefreshRateConfig.getEntry() == null) {
-            mPrefRefreshRateConfig.setValueIndex(2);
-        }
-        Handler.getMain().post(() -> {
-            mPrefRefreshRateInfo.setSummary(
-                String.format(getString(R.string.current_refresh_rate_info),
-                    String.valueOf(Math.round(getCurrentMaxHz())), String.valueOf(Math.round(getCurrentMinHz()))));
-        });
+        mPrefRefreshRateInfo.setSummary(
+            String.format(getString(R.string.current_refresh_rate_info),
+                String.valueOf(Math.round(getCurrentHz()))));
     }
 }
